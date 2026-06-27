@@ -4,12 +4,23 @@ Plugin para IntelliJ IDEA que adiciona suporte à **Linguagem Senior de Programa
 
 ## Recursos
 
-- 🎨 **Colorização de sintaxe** (via bundle TextMate embutido)
+- 🎨 **Colorização de sintaxe** (via bundle TextMate embutido), com categorias
+  distintas para controle (`Se`, `Senao`, `Enquanto`...), tipos (`Alfa`, `Numero`,
+  `Data`...), declaração (`Definir`), funções e operadores.
 - 🔗 **Bracket matching** para `{ }`, `( )`, `[ ]` e `Inicio` / `Fim`
 - ⌨️ **Auto-close** de pares, incluindo `Inicio` / `Fim`
 - 📂 **Code folding** de blocos `{ }` e `Inicio` / `Fim`
+- 🧭 **Ir para a declaração** (Cmd/Ctrl+B, Cmd/Ctrl+Click):
+  - **Funções** → implementação `Funcao nome()` em qualquer arquivo do projeto.
+  - **Variáveis** → declaração `Definir [Tipo] nome`, local ao arquivo e
+    respeitando o escopo de bloco (a mesma variável em blocos diferentes não se confunde).
+- 🔎 **Localizar usos** — ação "LSP: Localizar Usos" (menu de contexto ou ⌥⇧F7 / Alt+Shift+F7):
+  - **Funções** → usos em todo o projeto.
+  - **Variáveis** → usos no arquivo, dentro do escopo do bloco.
 - 🧩 **Snippets** para estruturas comuns (`se`, `enquanto`, `para`, `funcao`, etc.)
 - 🖼️ **Ícone** próprio para arquivos `.lsp` / `.lspt`
+- 🔤 **Corretor ortográfico desativado** em `.lsp` / `.lspt` (evita falsos positivos
+  em identificadores e texto em português)
 
 ## Requisitos
 
@@ -42,14 +53,27 @@ export PRIVATE_KEY_PASSWORD='sua-senha'
 ```
 src/main/
 ├── kotlin/dev/lspsenior/
-│   ├── LspBundleProvider.kt   # registra o bundle TextMate
-│   ├── LspIconProvider.kt     # ícone dos arquivos .lsp/.lspt
-│   └── LspFoldingBuilder.kt   # code folding
+│   ├── LspBundleProvider.kt          # registra o bundle TextMate
+│   ├── LspIconProvider.kt            # ícone dos arquivos .lsp/.lspt
+│   ├── LspFoldingBuilder.kt          # code folding
+│   ├── LspSpellcheckingStrategy.kt   # desativa o corretor em .lsp/.lspt
+│   ├── LspFunctionIndex.kt           # índice das implementações de funções
+│   ├── LspSymbols.kt                 # resolução de símbolos (escopo, varredura)
+│   ├── LspNavTarget.kt               # alvo de navegação (offset exato)
+│   ├── LspReferenceContributor.kt    # referências: ir para a declaração
+│   └── LspFindUsagesAction.kt        # ação "LSP: Localizar Usos"
 └── resources/
     ├── META-INF/plugin.xml
     ├── icons/lsp_file.svg
-    └── textmate-bundle/        # grammar, language-configuration, snippets
+    └── textmate-bundle/              # grammar, language-configuration, snippets
 ```
+
+## Atalhos
+
+| Ação | Atalho |
+|------|--------|
+| Ir para a declaração / implementação | Cmd/Ctrl+B, Cmd/Ctrl+Click |
+| Localizar usos | ⌥⇧F7 (Alt+Shift+F7) ou menu de contexto |
 
 ## Stack
 
