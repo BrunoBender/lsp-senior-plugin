@@ -2,15 +2,28 @@
     <id>dev.lspsenior</id>
     <name>LSP Senior</name>
     <vendor>LSP Senior</vendor>
-    <description>Suporte à Linguagem Senior de Programação (LSP): colorização, bracket matching e snippets.</description>
+    <description>Support for the Senior Programming Language (LSP): syntax highlighting, bracket matching, auto-close, code folding and snippets for .lsp and .lspt files.</description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.plugins.textmate</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <iconProvider implementation="dev.lspsenior.LspIconProvider"/>
+        <spellchecker.support language="textmate" implementationClass="dev.lspsenior.LspSpellcheckingStrategy"/>
         <lang.foldingBuilder language="textmate" implementationClass="dev.lspsenior.LspFoldingBuilder"/>
+        <fileBasedIndex implementation="dev.lspsenior.LspFunctionIndex"/>
+        <psi.referenceContributor language="textmate" implementation="dev.lspsenior.LspReferenceContributor"/>
     </extensions>
+
+    <actions>
+        <action id="dev.lspsenior.FindUsages"
+                class="dev.lspsenior.LspFindUsagesAction"
+                text="LSP: Localizar Usos"
+                description="Localiza usos de funções e variáveis da Linguagem Senior">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt shift F7"/>
+        </action>
+    </actions>
 
     <extensions defaultExtensionNs="com.intellij.textmate">
         <bundleProvider implementation="dev.lspsenior.LspBundleProvider"/>

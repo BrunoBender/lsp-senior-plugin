@@ -48,19 +48,19 @@
 			"patterns": [
 				{
 					"name": "keyword.control.lsp",
-					"match": "(?<!\\.)(?i)\\b(inicio|fim|definir|para|enquanto|vapara|regra|se|senao|cancel|alfa|numero|tabela|funcao|continue|pare|end|e|ou|abrir|ler|fechar|gravar|lernl|formatar|inserir|mensagem|atualizarcampos|iniciartransacao|finalizartransacao|desfazertransacao|valret|valstr|abrircursor|fecharcursor|achou|naoachou|SQL|retorna|cursor|data|execsql|execsqlex)\\b"
+					"match": "(?<!\\.)(?i)\\b(inicio|início|fim|se|senao|senão|enquanto|para|regra|vapara|vápara|continue|pare|retorna|retornar|cancel|cancelar)\\b"
 				},
 				{
-					"name": "keyword.control.lsp",
-					"match": "(?<!\\.)(?i)\\b(Lista|DefinirCampos|EfetivarCampos|AdicionarCampo|funcao|Adicionar|Inserir|Editar|Gravar|Cancelar|alterar|Excluir|para|Primeiro|Ultimo|Anterior|SetarChave|EditarChave|VaiParaChave|NumReg|SetaNumReg|IDA|FDA|QtdRegistros|Limpar)\\b"
+					"name": "storage.type.lsp",
+					"match": "(?<!\\.)(?i)\\b(alfa|numero|número|data|lista|cursor|tabela|funcao|função|booleano|boleano|flutuante|inteiro|decimal|blob|logico|lógico)\\b"
 				},
 				{
-					"name": "keyword.control.lsp",
-					"match": "(?<!\\.)(?i)\\b(Abrir|Alfa|Atualizar|Cancel|Continue|Cursor|Data|Definir|DesfazerTransacao|E|End|Enquanto|ExecSQL|ExecSQLEx|Fechar|Fim|FinalizarTransacao|Formatar|Funcao|Gravar|Gravarnl|IniciarTransacao|Inicio|Inserir|Ler|Lernl|Mensagem|Numero|Ou|Para|Pare|Regra|Se|Senao|Tabela|ValRet|ValStr|VaPara)\\b"
+					"name": "keyword.other.definir.lsp",
+					"match": "(?<!\\.)(?i)\\b(definir|iniciartransacao|finalizartransacao|desfazertransacao)\\b"
 				},
 				{
-					"name": "keyword.control.lsp",
-					"match": "(?<!\\.)(?i)\\b(Abrir|Fechar|Gravar|GravarNL|GravarNLEOL|Ler|LerNL)\\b"
+					"name": "entity.name.function.lsp",
+					"match": "(?<![\\w.])(?i)[A-Za-z_][A-Za-z0-9_]*\\s*(?=\\()"
 				}
 			]
 		}, 		
@@ -100,15 +100,15 @@
 			"patterns": [
 				{
 					"name": "keyword.operator.arithmetic.lsp",
-					"match": "(?<!\\.)\\+|-|\\*|/|=|\\+\\+|--"
-				},
-				{
-					"name": "keyword.operator.lsp",
-					"match": "(?<!\\.)\\b(e|ou)\\b"
+					"match": "(\\+\\+|--|\\+|-|\\*|/)"
 				},
 				{
 					"name": "keyword.operator.logical.lsp",
-					"match": "(?<!\\.)\\b(=|>|<|<>|>=|<=|e|ou)\\b"
+					"match": "(?<!\\.)(?i)\\b(e|ou|nao|não)\\b"
+				},
+				{
+					"name": "keyword.operator.logical.lsp",
+					"match": "(<>|>=|<=|=|>|<)"
 				}				
 			]
 		},
