@@ -1,0 +1,18 @@
+<idea-plugin>
+    <id>dev.lspsenior</id>
+    <name>LSP Senior</name>
+    <vendor>LSP Senior</vendor>
+    <description>Suporte à Linguagem Senior de Programação (LSP): colorização, bracket matching e snippets.</description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.textmate</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <iconProvider implementation="dev.lspsenior.LspIconProvider"/>
+        <lang.foldingBuilder language="textmate" implementationClass="dev.lspsenior.LspFoldingBuilder"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij.textmate">
+        <bundleProvider implementation="dev.lspsenior.LspBundleProvider"/>
+    </extensions>
+</idea-plugin>

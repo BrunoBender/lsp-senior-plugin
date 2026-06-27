@@ -1,0 +1,29 @@
+{
+  "name": "lsp-senior",
+  "displayName": "LSP Senior",
+  "version": "1.0.0",
+  "engines": { "vscode": "*" },
+  "contributes": {
+    "languages": [
+      {
+        "id": "lsp",
+        "aliases": ["LSP Senior", "lsp"],
+        "extensions": [".lsp", ".lspt"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "lsp",
+        "scopeName": "source.lsp",
+        "path": "./syntaxes/lsp.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "lsp",
+        "path": "./snippets/lsp.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+# Material de assinatura — NUNCA versionar
+signing/
+*.pem
+*.crt
+
+# Build
+build/
+out/
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ Platform plugin
+.intellijPlatform/
+
+# IDE
+.idea/
+*.iml
+
+# Kotlin
+.kotlin/
+
+# macOS
+.DS_Store
+
+# Claude Code (config local)
+.claude/

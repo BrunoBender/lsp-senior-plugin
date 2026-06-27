@@ -1,0 +1,38 @@
+{
+  "Bloco inicio/fim": {
+    "prefix": "inicio",
+    "body": ["inicio", "\t$0", "fim"],
+    "description": "Bloco inicio ... fim"
+  },
+  "Se": {
+    "prefix": "se",
+    "body": ["se ${1:condicao}", "{", "\t$0", "}"],
+    "description": "Estrutura condicional se"
+  },
+  "Se/Senao": {
+    "prefix": "sesenao",
+    "body": ["se ${1:condicao}", "{", "\t$2", "}", "senao", "{", "\t$0", "}"],
+    "description": "Estrutura condicional se ... senao"
+  },
+  "Enquanto": {
+    "prefix": "enquanto",
+    "body": ["enquanto ${1:condicao}", "{", "\t$0", "}"],
+    "description": "Laco enquanto"
+  },
+  "Para": {
+
+    "prefix": "para",
+    "body": ["para ${1:i} = ${2:1} ate ${3:n}", "{", "\t$0", "}"],
+    "description": "Laco para"
+  },
+  "Funcao": {
+    "prefix": "funcao",
+    "body": ["funcao ${1:nome}(${2:params})", "{", "\t$0", "}"],
+    "description": "Definicao de funcao"
+  },
+  "Definir": {
+    "prefix": "definir",
+    "body": ["definir ${1:alfa} ${2:variavel};$0"],
+    "description": "Declaracao de variavel"
+  }
+}
