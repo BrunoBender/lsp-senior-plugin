@@ -9,8 +9,21 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <iconProvider implementation="dev.lspsenior.LspIconProvider"/>
+        <spellchecker.support language="textmate" implementationClass="dev.lspsenior.LspSpellcheckingStrategy"/>
         <lang.foldingBuilder language="textmate" implementationClass="dev.lspsenior.LspFoldingBuilder"/>
+        <fileBasedIndex implementation="dev.lspsenior.LspFunctionIndex"/>
+        <psi.referenceContributor language="textmate" implementation="dev.lspsenior.LspReferenceContributor"/>
     </extensions>
+
+    <actions>
+        <action id="dev.lspsenior.FindUsages"
+                class="dev.lspsenior.LspFindUsagesAction"
+                text="LSP: Localizar Usos"
+                description="Localiza usos de funções e variáveis da Linguagem Senior">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt shift F7"/>
+        </action>
+    </actions>
 
     <extensions defaultExtensionNs="com.intellij.textmate">
         <bundleProvider implementation="dev.lspsenior.LspBundleProvider"/>
