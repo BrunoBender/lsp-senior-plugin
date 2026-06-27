@@ -2,7 +2,7 @@
     <id>dev.lspsenior</id>
     <name>LSP Senior</name>
     <vendor>LSP Senior</vendor>
-    <description>Suporte à Linguagem Senior de Programação (LSP): colorização, bracket matching e snippets.</description>
+    <description>Support for the Senior Programming Language (LSP): syntax highlighting, bracket matching, auto-close, code folding and snippets for .lsp and .lspt files.</description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.plugins.textmate</depends>
