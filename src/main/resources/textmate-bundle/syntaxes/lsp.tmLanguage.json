@@ -47,6 +47,10 @@
 		"keywords": {
 			"patterns": [
 				{
+					"name": "constant.language.boolean.lsp",
+					"match": "(?<!\\.)(?i)\\b(cVerdadeiro|cFalso)\\b"
+				},
+				{
 					"name": "keyword.control.lsp",
 					"match": "(?<!\\.)(?i)\\b(inicio|início|fim|se|senao|senão|enquanto|para|regra|vapara|vápara|continue|pare|retorna|retornar|cancel|cancelar)\\b"
 				},
