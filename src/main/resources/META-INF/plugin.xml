@@ -19,7 +19,8 @@
     <actions>
         <action id="dev.lspsenior.FindUsages"
                 class="dev.lspsenior.LspFindUsagesAction"
-                text="LSP: Localizar Usos"
+                text="Localizar Usos"
+                icon="/icons/lsp_logo.svg"
                 description="Localiza usos de funções e variáveis da Linguagem Senior">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <keyboard-shortcut keymap="$default" first-keystroke="alt shift F7"/>
