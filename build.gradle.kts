@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.lspsenior"
-version = "1.1.5"
+version = "1.1.9"
 
 repositories {
     mavenCentral()
@@ -16,8 +16,11 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity("2025.1")
+        intellijIdeaCommunity("2025.3") {
+            useInstaller = false
+        }
         bundledPlugin("org.jetbrains.plugins.textmate")
+        bundledModule("intellij.spellchecker")
         pluginVerifier()
         zipSigner()
     }
@@ -27,7 +30,7 @@ intellijPlatform {
     instrumentCode = false
     pluginConfiguration {
         ideaVersion {
-            sinceBuild = "251"
+            sinceBuild = "253"
             untilBuild = provider { null }
         }
     }
