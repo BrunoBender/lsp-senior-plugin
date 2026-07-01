@@ -2,7 +2,7 @@
     <id>dev.lspsenior</id>
     <name>LSP Senior</name>
     <vendor>LSP Senior</vendor>
-    <description>Support for the Senior Programming Language (LSP): syntax highlighting, bracket matching, auto-close, code folding and snippets for .lsp and .lspt files.</description>
+    <description>Support for the Senior Programming Language (LSP): syntax highlighting, bracket matching, auto-close, code folding, breadcrumbs and snippets for .lsp and .lspt files.</description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.plugins.textmate</depends>
@@ -11,6 +11,7 @@
         <iconProvider implementation="dev.lspsenior.LspIconProvider"/>
         <spellchecker.support language="textmate" implementationClass="dev.lspsenior.LspSpellcheckingStrategy"/>
         <lang.foldingBuilder language="textmate" implementationClass="dev.lspsenior.LspFoldingBuilder"/>
+        <breadcrumbsInfoProvider implementation="dev.lspsenior.LspBreadcrumbsProvider"/>
         <fileBasedIndex implementation="dev.lspsenior.LspFunctionIndex"/>
         <psi.referenceContributor language="textmate" implementation="dev.lspsenior.LspReferenceContributor"/>
     </extensions>
