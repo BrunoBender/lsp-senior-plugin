@@ -1,8 +1,8 @@
 package dev.lspsenior
 
-import com.intellij.lang.BreadcrumbsProvider
 import com.intellij.lang.Language
 import com.intellij.psi.PsiElement
+import com.intellij.ui.breadcrumbs.BreadcrumbsProvider
 
 /**
  * Breadcrumbs (o caminho de blocos exibido no topo do editor) para arquivos .lsp / .lspt.
