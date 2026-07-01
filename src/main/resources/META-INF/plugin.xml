@@ -12,6 +12,7 @@
         <spellchecker.support language="textmate" implementationClass="dev.lspsenior.LspSpellcheckingStrategy"/>
         <lang.foldingBuilder language="textmate" implementationClass="dev.lspsenior.LspFoldingBuilder"/>
         <breadcrumbsInfoProvider implementation="dev.lspsenior.LspBreadcrumbsProvider"/>
+        <fileBreadcrumbsCollector implementation="dev.lspsenior.LspBreadcrumbsCollector"/>
         <fileBasedIndex implementation="dev.lspsenior.LspFunctionIndex"/>
         <psi.referenceContributor language="textmate" implementation="dev.lspsenior.LspReferenceContributor"/>
     </extensions>
