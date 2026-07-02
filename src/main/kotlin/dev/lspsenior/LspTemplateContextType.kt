@@ -11,7 +11,10 @@ import com.intellij.codeInsight.template.TemplateContextType
 class LspTemplateContextType : TemplateContextType("LSP") {
 
     override fun isInContext(context: TemplateActionContext): Boolean {
-        val ext = context.file.virtualFile?.extension?.lowercase()
-        return ext == "lsp" || ext == "lspt"
+        // Usa o NOME do arquivo (PsiFile.getName), não o virtualFile: na checagem de
+        // contexto o platform passa uma cópia não-física do PsiFile cujo getVirtualFile()
+        // é null — o que fazia isInContext retornar false e os templates nunca aparecerem.
+        val name = context.file.name.lowercase()
+        return name.endsWith(".lsp") || name.endsWith(".lspt")
     }
 }
