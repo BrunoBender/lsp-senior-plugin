@@ -1,0 +1,51 @@
+# Descrições das funções nativas (Nome<TAB>Descrição). Uma por linha.
+# Usado pela documentação (Ctrl+Q) do autocomplete.
+AlfaParaInt	Converte um número armazenado como Alfa e o retorna como um tipo Número.
+ArqExiste	Verifica se um arquivo físico existe no local especificado.
+AtualizaBarraProgresso	Atualiza as mensagens apresentadas na tela da barra de progresso.
+CaracterParaAlfa	Converte um caracter (que fica armazenado pelo código ASCII) para o valor Alfanumérico correspondente.
+CodData	Possibilita a composição de uma data, montando-a através de dia, mês e ano.
+ConverteCodificacaoString	Converte a codificação de um texto para o formato definido pelo usuário.
+ConverteMascara	Converte um valor de entrada (numérico, data, hora ou cadeia de caracteres) para o tipo de dado cadeia de caracteres.
+ConverteParaMaiusculo	Converte o conteúdo de uma variável do tipo Alfa para maiúsculo.
+ConverteParaMinusculo	Converte o conteúdo de uma variável do tipo Alfa para minúsculo.
+ConverteTexto	Substitui os caracteres especiais informados no texto de acordo com a codificação do padrão informada; retorna em uma nova variável o texto convertido.
+CopiarAlfa	Copia parte do conteúdo de uma variável/campo alfanumérico para a variável alfanumérica Retorno.
+CriarArquivoTemporario	Cria um arquivo temporário de nome aleatório e único prefixado com o valor do parâmetro prefixo.
+DataHoje	Retorna a data atual do sistema operacional.
+DataHora	Retorna data e hora atual.
+DecodData	Permite a separação de uma data em dia, mês e ano para que os dados possam ser usados separadamente.
+DeletarAlfa	Apaga uma determinada quantidade de caracteres de uma variável/campo a partir da posição informada.
+Desencriptar	Função para descriptografar uma cadeia de caracteres.
+Dividir	Função disponível para dividir um valor por outro.
+Encriptar	Criptografa a cadeia de caracteres.
+ExcluirArquivoTemporario	Exclui um arquivo criado pela função CriarArquivoTemporario.
+ExecProg	Permite a execução de aplicativos durante a execução de regras.
+FinalizaBarraProgresso	Finaliza a tela de barra de progresso.
+FormatarData	Formata a data.
+GeraHash	Retorna um Hash do texto informado.
+GerarNonce	Gera o valor do campo Nonce, um número aleatório.
+GerarPwdDigest	Gera o Digest da senha, a partir do Nonce, Data e senha, em formato base64.
+GeraSenha	Retorna uma sequência de caracteres alfanuméricos aleatoriamente.
+GeraToken	Retorna um token criptografado.
+HoraParaMinuto	Converte em minutos os valores que representam hora e minuto.
+IniciaBarraProgresso	Inicia a barra de progresso utilizada para mostrar ao usuário o andamento de um processo mais extenso.
+IntParaAlfa	Converte um número para formato alfanumérico, desprezando as casas decimais.
+LerPosicaoAlfa	Identifica qual caracter está em determinada posição do campo/variável de origem.
+LinhasArquivo	Leitura da quantidade de linhas existentes em um determinado arquivo.
+ListaItem	Retorna o valor de um item de uma lista de valores concatenados por um caracter separador.
+ListaQuantidade	Retorna a quantidade de itens de uma lista de valores concatenados por um caracter separador em um texto.
+Mensagem	Apresenta a mensagem em tela de acordo com a parametrização do tipo de retorno e da mensagem que será visualizada.
+ObtemIdiomaAtivo	Retorna o código do idioma utilizado pelo usuário.
+ObterVersaoSistema	Retorna a versão do sistema.
+OcultaBarraProgressoRelatorio	Oculta a barra de progresso padrão durante a execução de relatórios.
+PosicaoAlfa	Procura por uma parte de texto dentro de um campo/variável do tipo Alfa, retornando a posição em que o texto inicia.
+RemoveExpressoesProibidas	Não permite que campos de relatórios/regras aceitem algum tipo de script.
+RestoDivisao	Retorna o resto da divisão de um número por outro.
+RetornaValorCFG	Retorna para a regra o valor de uma determinada chave da Central de Configuração Senior utilizada pelo sistema.
+TamanhoAlfa	Verifica o tamanho do campo Alfa especificado em Origem.
+TrocaString	Procura por um trecho específico dentro de um texto e o substitui, retornando um novo texto.
+Truncar	Trunca um número para inteiro, removendo a parte fracionária do número.
+VerificaAbaAtiva	Verifica, pela descrição passada por parâmetro, se essa é a descrição da aba ativa.
+VrfAbrA	Verifica se um determinado valor está contido em uma abrangência especificada.
+VrfAbrN	Verifica se um determinado valor numérico está contido em uma abrangência especificada.

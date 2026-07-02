@@ -10,6 +10,9 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#variaveis_reservadas"
+		},
+		{
 			"include": "#texto"
 		},
 		{
@@ -303,6 +306,14 @@
 				{
 					"name": "entity.name.function.lsp",
 					"match": "(?<!\\.)(?i)\\b(addKeyAndStringValueInJSON|addKeyAndIntegerValueInJSON|addKeyAndDoubleValueInJSON|addKeyAndBooleanValueInJSON|addKeyAndTDateTimeValueInJSON|addKeyAndJSONValueInJSON|addJSONInJSONArray|getItemJSONArrayStringByTag|getItemJSONArrayIntegerByTag|getItemJSONArrayDoubleByTag|getJSONArrayLength|getValueByKeyFromJSON|getStringValueByKeyFromJSON|getIntegerValueByKeyFromJSON|ExecSqlEx|ExecSql|Divide|AlfaParaData|TiraEspacos|ValidaPISCPF|EnviaEmailHTML)\\b"
+				}
+			]
+		},
+		"variaveis_reservadas": {
+			"patterns": [
+				{
+					"name": "variable.language.lsp",
+					"match": "(?<!\\.)(?i)\\b(CWValidacaoInformacoesRecuperacaoSenha|CWEmailAlternativoRecuperacaoSenha|ControlaManutencaoQuadroPosto|GerTurmaEscalaGeracaoESocial|GerCodEscalaGeracaoESocial|GerDescricaoJornadaESocial|PermissaoAlterarPermissoes|TipoOperacaoRegraEntidade|AlteracaoSenhaCurriculo|CWEtapaRecuperacaoSenha|RetQtdCaracteresPosLoc|GerTipoJornadaESocial|IndDataPropostaQuadro|PermissaoConsultar|TipoUtiRegraTelSel|CodErroEnviaEmail|ManQuadroOperacao|MsgErroEnviaEmail|PermissaoAlterar|PermissaoExcluir|PermissaoInserir|UsaPostoTrabalho|ValorArredondado|TabDuplicaPosto|TelaOrigemRegra|TipoOperacaoGPC|CadastroAntigo|ConWebElemento|PerfilEntidade|SQLStringRegra|vExecucaoRegra|AvlPastaAtiva|ConWebRetorno|EspTotalLevel|SitDataGerada|VersaoSistema|CarVagEmpCen|DatAltCarCen|DatAltCcuCen|DatAltEscCen|DatAltFilCen|DatAltLocCen|DataProcesso|DatFimSolExa|DatIniSolExa|EmpAltFilCen|EstCarEmpCen|LocalDestino|MotCarEmpCen|NomeEntidade|NumEmpSolExa|OriRegAprInd|Reg771ExePro|TabOrgEmpCen|TipoEntidade|UsaAbrPerfil|vMensagemWeb|cVerdadeiro|DesRodapePa|LocalOrigem|Organograma|RENormativo|TemNotaZero|TotHrMesAtv|TotHrMesDis|TotHrSemAti|TotHrSemDis|GuiaEvento|LogFuncoes|NomeTabela|SAPRetorno|TipoEfeCan|TipoEmpAnt|TipoFicMed|TipoInfSal|TipoReaSal|WNConector|AbrTelSel|AnoBasAti|ApoEspEmp|ApoEspOrc|AtuTabOrg|CalColOrc|CarEmpCen|CarVagEmp|CauRaiOrc|CcuEmpCen|ClaSalAnt|ClaSalEmp|CmpEveOrc|CmpLocOrc|CmpRefOrc|CodCalOrc|CodCarFnc|CodCcuOrc|CodCenAti|CodCliNum|CodLocEmp|CodLocIns|CodPesExt|CodSinEmp|CodVinEmp|CplMesAnt|CplSalEmp|DatAltAdi|DatAltCar|DatAltCat|DatAltCcu|DatAltEsc|DatAltEtb|DatAltEvt|DatAltFil|DatAltLoc|DatAltNat|DatAltPro|DatAltSal|DatDemOrc|DatFimFnc|DatIniFnc|DatSalAnt|DesRodape|DiaCmpRef|DiaDsrOrc|DiaUtiOrc|EdiIdnFil|EdiIdnFun|EmpAltFil|EmpLocOrc|EscEmpCen|EspCodNiv|EspDesNiv|EspNomNiv|EstCarEmp|EstCarFnc|EstSalAnt|EstSalEmp|FilEmpCen|GraAtiDis|HorBasEmp|HorDsrEmp|HorMesCen|HorSabEmp|HorSemEmp|IteResOrc|LocEmpCen|ModAbrAti|MotCarEmp|MotSalAnt|MotSalEmp|NatDesEmp|NatDesOrc|NivSalAnt|NivSalEmp|NomModRel|NovaSenha|NumFicReg|NumLocOrc|ObsHprPro|OriHisAfa|OriHisApe|OriHisCnc|OriHisFor|OriRppRes|PerDesAnt|PerDesEmp|PerfilAti|PerInsEmp|PerPerEmp|PonEmbEvt|PPPNumCad|PPPNumEmp|PPPTipCol|PrgDabOrc|PrgDfeOrc|QtdAnoTra|QtdColOrc|QtdConBan|QtdConPix|QtdDiaTra|QtdFunEmp|QtdMesTra|QtdVagQua|QtdVarPre|RevOrcAti|SalDiaEmp|SalHorEmp|SalMesAnt|SalMesEmp|SalMinEmp|SinEmpCen|SitDemOrc|SldAvo13s|SldDiaFer|SldPrv13s|SldPrvFer|SocSinEmp|TabOrgEmp|TabOrgOrc|TipCalInd|TipDisEpi|TipDocEmp|TipEstEmp|TipOpePro|TipSalAnt|TipSalEmp|TipSisEmp|TotAbrSel|TpoSerDia|TurEmpCen|UltCodLoc|UsaCarVag|ValBasCal|ValConBan|ValConPix|ValOrcInt|ValOrcReg|ValSalCen|VerOrcAti|VinEmpCen|EmpAtiva|EspLevel|NomeMenu|PPPSecao|REAdmMes|REArrHor|REArrMen|REBasCpl|REBasSal|RECodMot|REDatAlt|REDatDem|REDemMes|REHisFut|RENovSal|REReaPro|REReaSal|RETipInt|RETipSin|RETipSis|RetModID|REValSal|SiteAddr|Web_HTML|CgiAddr|EspTipo|PathAej|AnoAdm|AnoDem|AnoHoj|AnoSis|AnxEma|AssEma|CarEmp|CarPro|CatEmp|CauDem|CcoEma|CcpEma|CcuEmp|cFalso|ChvPix|ClaAnt|ClaSal|CnvHor|CnvMin|CodAge|CodBan|CodUsu|ConBan|CplAnt|CplNiv|CplPro|DatBan|DatDem|datdma|DatFim|DatHoj|DatIni|DatPix|DatPro|DatRef|DatRel|DatSis|DiaAdm|DiaDem|DiaHoj|DiaSis|DigBan|DirExe|DstEma|EdiCad|EdiCar|EdiCep|EdiCra|EdiLc1|EmpAtu|EmpCol|EmpPro|ErrImp|EscEmp|EstAnt|EstAux|EstSal|EtbEmp|EvtEmp|FilCol|FilEmp|HieLoc|HisCon|HorSem|HorSis|IndCol|LinWeb|LocChe|LocCol|LocEmp|MasLoc|MenLog|MesAdm|MesDem|MesExt|MesHoj|MesSis|MotAl1|MotAl2|MotSel|NivAnt|NivSal|NomEmp|NomUsu|NroMes|NumCol|NumPag|NumVia|OriCan|PerCon|PerFim|PerIni|PerPix|PidGer|RetDes|RmtEma|SalAdm|SalAnt|SalAt1|SalAt2|SalCpl|SalEmp|SalNiv|SalPro|SeqCon|SeqPix|SitEmp|status|TabChe|TabCol|TemCer|TipBan|TipPro|TipReg|TpcPix|TpoSer|TurChe|TurCol|TurEmp|TurHor|TxtEma|UltSal|ValImp|VenExa|VerSis|VerWeb|ViaCol)\\b"
 				}
 			]
 		}
