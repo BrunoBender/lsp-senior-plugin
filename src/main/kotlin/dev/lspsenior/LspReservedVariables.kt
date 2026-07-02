@@ -9,6 +9,9 @@ object LspReservedVariables {
 
     val names: List<String> by lazy { load() }
 
+    /** Nomes em minúsculas, para reconhecimento case-insensitive (AnoHoj == anohoj). */
+    val lowerSet: Set<String> by lazy { names.mapTo(HashSet()) { it.lowercase() } }
+
     private fun load(): List<String> {
         val stream = javaClass.getResourceAsStream("/dev/lspsenior/reserved-variables.txt")
             ?: return emptyList()

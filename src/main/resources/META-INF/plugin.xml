@@ -17,6 +17,7 @@
         <psi.referenceContributor language="textmate" implementation="dev.lspsenior.LspReferenceContributor"/>
         <completion.contributor language="textmate" implementationClass="dev.lspsenior.LspCompletionContributor"/>
         <lang.documentationProvider language="textmate" implementationClass="dev.lspsenior.LspDocumentationProvider"/>
+        <annotator language="textmate" implementationClass="dev.lspsenior.LspReservedVariableAnnotator"/>
         <lang.psiStructureViewFactory language="textmate" implementationClass="dev.lspsenior.LspStructureViewFactory"/>
         <highlightUsagesHandlerFactory implementation="dev.lspsenior.LspHighlightUsagesHandlerFactory"/>
         <renameHandler implementation="dev.lspsenior.LspRenameHandler"/>
