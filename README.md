@@ -10,8 +10,6 @@ Plugin para IntelliJ IDEA que adiciona suporte à **Linguagem Senior de Programa
 - 🔗 **Bracket matching** para `{ }`, `( )`, `[ ]` e `Inicio` / `Fim`
 - ⌨️ **Auto-close** de pares, incluindo `Inicio` / `Fim`
 - 📂 **Code folding** de blocos `{ }` e `Inicio` / `Fim`
-- 🍞 **Breadcrumbs** no topo do editor com o caminho de blocos (`Regra` / `Se` /
-  `Senao` / `Enquanto` / `Para` / `Inicio`) até o cursor
 - 🧭 **Ir para a declaração** (Cmd/Ctrl+B, Cmd/Ctrl+Click):
   - **Funções** → implementação `Funcao nome()` em qualquer arquivo do projeto.
   - **Variáveis** → declaração `Definir [Tipo] nome`, local ao arquivo e
@@ -66,7 +64,6 @@ src/main/
 │   ├── LspBundleProvider.kt          # registra o bundle TextMate
 │   ├── LspIconProvider.kt            # ícone dos arquivos .lsp/.lspt
 │   ├── LspFoldingBuilder.kt          # code folding
-│   ├── LspBreadcrumbsProvider.kt     # breadcrumbs (caminho de blocos)
 │   ├── LspSpellcheckingStrategy.kt   # desativa o corretor em .lsp/.lspt
 │   ├── LspFunctionIndex.kt           # índice das implementações de funções
 │   ├── LspSymbols.kt                 # resolução de símbolos (escopo, varredura)
