@@ -120,5 +120,33 @@ object LspSymbols {
         return result
     }
 
+    /**
+     * Nomes de variáveis declaradas ("Definir [Tipo] nome") visíveis em [offset]:
+     * declaradas antes e dentro de um bloco que ainda o contém. Ordem de declaração.
+     */
+    fun visibleVariables(text: CharSequence, offset: Int): List<String> {
+        val result = LinkedHashSet<String>()
+        for (match in DECL_ANY.findAll(text)) {
+            val group = match.groups[1] ?: continue
+            if (group.range.first > offset) continue
+            if (offset < enclosingBlockEnd(text, match.range.first)) result.add(group.value)
+        }
+        return result.toList()
+    }
+
+    /** Intervalo [início..fim] de busca para um nome: escopo da variável, ou todo o arquivo. */
+    fun variableScope(text: CharSequence, name: String, offset: Int): IntRange {
+        val decl = resolveVariableDecl(text, name, offset) ?: return 0..text.length
+        return decl.second..enclosingBlockEnd(text, decl.second)
+    }
+
+    /** True se [name] é um identificador válido da linguagem. */
+    fun isIdentifier(name: String): Boolean =
+        name.isNotEmpty() && (name[0].isLetter() || name[0] == '_') && name.all { isIdent(it) }
+
+    private val DECL_ANY = Regex(
+        "(?i)\\bDefinir[ \\t]+(?:[A-Za-z_][A-Za-z0-9_.]*[ \\t]+)?([A-Za-z_][A-Za-z0-9_]*)\\b(?![ \\t]*\\()",
+    )
+
     private fun isIdent(c: Char) = c.isLetterOrDigit() || c == '_'
 }
