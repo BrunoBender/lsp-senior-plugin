@@ -66,6 +66,15 @@ class LspCompletionContributor : CompletionContributor() {
         for (variable in LspSymbols.visibleVariables(text, offset)) {
             rs.addElement(LookupElementBuilder.create(variable).withIcon(AllIcons.Nodes.Variable).withTypeText("variável"))
         }
+
+        for (native in LspNativeFunctions.names) {
+            rs.addElement(
+                LookupElementBuilder.create(native)
+                    .withIcon(AllIcons.Nodes.Function)
+                    .withTypeText("nativa")
+                    .withInsertHandler(PARENS),
+            )
+        }
     }
 
     private fun isIdent(c: Char) = c.isLetterOrDigit() || c == '_'

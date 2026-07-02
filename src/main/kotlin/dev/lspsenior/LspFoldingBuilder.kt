@@ -75,7 +75,52 @@ class LspFoldingBuilder : FoldingBuilderEx() {
                 else -> i++
             }
         }
+        addBannerRegions(descriptors, node, document, text)
         return descriptors.toTypedArray()
+    }
+
+    /**
+     * Dobra blocos de comentário de linha `@...` consecutivos (os banners
+     * `@****Titulo****@`) numa linha só, com o título como placeholder.
+     */
+    private fun addBannerRegions(
+        out: MutableList<FoldingDescriptor>,
+        node: ASTNode,
+        document: Document,
+        text: CharSequence,
+    ) {
+        val lineCount = document.lineCount
+        var line = 0
+        while (line < lineCount) {
+            if (!isCommentLine(text, document, line)) { line++; continue }
+            val first = line
+            while (line + 1 < lineCount && isCommentLine(text, document, line + 1)) line++
+            if (line > first) {
+                val start = document.getLineStartOffset(first)
+                val end = document.getLineEndOffset(line)
+                out.add(FoldingDescriptor(node, TextRange(start, end), null, bannerTitle(text, document, first, line)))
+            }
+            line++
+        }
+    }
+
+    private fun isCommentLine(text: CharSequence, document: Document, line: Int): Boolean {
+        val s = document.getLineStartOffset(line)
+        val e = document.getLineEndOffset(line)
+        var i = s
+        while (i < e && text[i].isWhitespace()) i++
+        return i < e && text[i] == '@'
+    }
+
+    /** Melhor título do banner: a linha com mais letras, sem @ e *. */
+    private fun bannerTitle(text: CharSequence, document: Document, first: Int, last: Int): String {
+        var best = ""
+        for (line in first..last) {
+            val raw = text.subSequence(document.getLineStartOffset(line), document.getLineEndOffset(line)).toString()
+            val clean = raw.trim().trim('@').replace('*', ' ').trim()
+            if (clean.count { it.isLetter() } > best.count { it.isLetter() }) best = clean
+        }
+        return if (best.isEmpty()) "@ ... @" else "@ $best @"
     }
 
     private fun addRegion(

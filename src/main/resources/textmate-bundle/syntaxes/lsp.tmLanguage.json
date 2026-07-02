@@ -1,7 +1,10 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "lsp",
-	"fileTypes": ["lsp", "lspt"],
+	"fileTypes": [
+		"lsp",
+		"lspt"
+	],
 	"patterns": [
 		{
 			"include": "#keywords"
@@ -32,7 +35,7 @@
 		},
 		{
 			"include": "#variaveis_rh"
-		},		
+		},
 		{
 			"include": "#funcoes_erp"
 		},
@@ -41,7 +44,10 @@
 		},
 		{
 			"include": "#funcoes_lsp"
-		}	
+		},
+		{
+			"include": "#funcoes_web5"
+		}
 	],
 	"repository": {
 		"keywords": {
@@ -67,7 +73,7 @@
 					"match": "(?<![\\w.])(?i)[A-Za-z_][A-Za-z0-9_]*\\s*(?=\\()"
 				}
 			]
-		}, 		
+		},
 		"texto": {
 			"name": "string.quoted.double.lsp",
 			"begin": "\"",
@@ -113,17 +119,35 @@
 				{
 					"name": "keyword.operator.logical.lsp",
 					"match": "(<>|>=|<=|=|>|<)"
-				}				
+				}
 			]
 		},
 		"pontuacao": {
 			"patterns": [
-				{ "name": "punctuation.section.braces.begin.lsp", "match": "\\{" },
-				{ "name": "punctuation.section.braces.end.lsp", "match": "\\}" },
-				{ "name": "punctuation.section.parens.begin.lsp", "match": "\\(" },
-				{ "name": "punctuation.section.parens.end.lsp", "match": "\\)" },
-				{ "name": "punctuation.section.brackets.begin.lsp", "match": "\\[" },
-				{ "name": "punctuation.section.brackets.end.lsp", "match": "\\]" }
+				{
+					"name": "punctuation.section.braces.begin.lsp",
+					"match": "\\{"
+				},
+				{
+					"name": "punctuation.section.braces.end.lsp",
+					"match": "\\}"
+				},
+				{
+					"name": "punctuation.section.parens.begin.lsp",
+					"match": "\\("
+				},
+				{
+					"name": "punctuation.section.parens.end.lsp",
+					"match": "\\)"
+				},
+				{
+					"name": "punctuation.section.brackets.begin.lsp",
+					"match": "\\["
+				},
+				{
+					"name": "punctuation.section.brackets.end.lsp",
+					"match": "\\]"
+				}
 			]
 		},
 		"variaveis_erp": {
@@ -271,6 +295,14 @@
 				{
 					"name": "entity.name.function.lsp",
 					"match": "(?<!\\.)(?i)\\b(FtpApagarArquivo|FtpApagarDiretorio|FtpConexao|FtpCriarDiretorio|FtpDownload|FtpListaItem|FtpListaItemDetalhes|FtpListaItemPermissoes|FtpListaQuantidade|FtpListar|FtpModoConexao|FtpModoErro|FtpModoTransferencia|FtpProxy|FtpRenomear|FtpSetaSFTP|FtpUltimoErro|FtpUpload)\\b"
+				}
+			]
+		},
+		"funcoes_web5": {
+			"patterns": [
+				{
+					"name": "entity.name.function.lsp",
+					"match": "(?<!\\.)(?i)\\b(addKeyAndStringValueInJSON|addKeyAndIntegerValueInJSON|addKeyAndDoubleValueInJSON|addKeyAndBooleanValueInJSON|addKeyAndTDateTimeValueInJSON|addKeyAndJSONValueInJSON|addJSONInJSONArray|getItemJSONArrayStringByTag|getItemJSONArrayIntegerByTag|getItemJSONArrayDoubleByTag|getJSONArrayLength|getValueByKeyFromJSON|getStringValueByKeyFromJSON|getIntegerValueByKeyFromJSON|ExecSqlEx|ExecSql|Divide|AlfaParaData|TiraEspacos|ValidaPISCPF|EnviaEmailHTML)\\b"
 				}
 			]
 		}
