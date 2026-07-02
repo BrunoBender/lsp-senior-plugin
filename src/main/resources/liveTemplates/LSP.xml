@@ -1,0 +1,59 @@
+<templateSet group="LSP">
+  <template name="cursor" value="Definir Alfa aCursor$NOME$;&#10;Definir Alfa aQuery$NOME$;&#10;aQuery$NOME$ = &quot;$QUERY$&quot;;&#10;SQL_Criar(aCursor$NOME$);&#10;SQL_UsarAbrangencia(aCursor$NOME$, 0);&#10;SQL_UsarSQLSenior2(aCursor$NOME$, 0);&#10;SQL_DefinirComando(aCursor$NOME$, aQuery$NOME$);&#10;SQL_AbrirCursor(aCursor$NOME$);&#10;Se(SQL_EOF(aCursor$NOME$) = 0){&#10;  $END$&#10;}&#10;SQL_FecharCursor(aCursor$NOME$);&#10;SQL_Destruir(aCursor$NOME$);" description="Ciclo de cursor SQL (fetch unico)" toReformat="false" toShortenFQNames="false">
+    <variable name="NOME" expression="" defaultValue="&quot;Nome&quot;" alwaysStopAt="true" />
+    <variable name="QUERY" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="LSP" value="true" />
+    </context>
+  </template>
+  <template name="cursorloop" value="Definir Alfa aCursor$NOME$;&#10;Definir Alfa aQuery$NOME$;&#10;aQuery$NOME$ = &quot;$QUERY$&quot;;&#10;SQL_Criar(aCursor$NOME$);&#10;SQL_UsarAbrangencia(aCursor$NOME$, 0);&#10;SQL_UsarSQLSenior2(aCursor$NOME$, 0);&#10;SQL_DefinirComando(aCursor$NOME$, aQuery$NOME$);&#10;SQL_AbrirCursor(aCursor$NOME$);&#10;Enquanto(SQL_EOF(aCursor$NOME$) = 0){&#10;  $END$&#10;  SQL_Proximo(aCursor$NOME$);&#10;}&#10;SQL_FecharCursor(aCursor$NOME$);&#10;SQL_Destruir(aCursor$NOME$);" description="Cursor SQL com laco Enquanto" toReformat="false" toShortenFQNames="false">
+    <variable name="NOME" expression="" defaultValue="&quot;Nome&quot;" alwaysStopAt="true" />
+    <variable name="QUERY" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="LSP" value="true" />
+    </context>
+  </template>
+  <template name="perm" value="Definir Alfa aRecursos;&#10;Definir Alfa aResponse;&#10;aRecursos = &quot;$RECURSO$&quot;;&#10;aResponse = &quot;{}&quot;;&#10;Definir Funcao f001ValidarPermissaoUsuario();&#10;f001ValidarPermissaoUsuario();&#10;Se(nHasRecurso = 0){&#10;  addKeyAndIntegerValueInJSON(aResponse, &quot;status&quot;, 403, aResponse);&#10;  Web_HTML = aResponse;&#10;  Cancel;&#10;}&#10;$END$" description="Validacao de permissao de usuario" toReformat="false" toShortenFQNames="false">
+    <variable name="RECURSO" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="LSP" value="true" />
+    </context>
+  </template>
+  <template name="wparam" value="Definir Alfa a$NOME$;&#10;WCheckValString(&quot;$PARAM$&quot;, &quot;&quot;, a$NOME$, &quot;S&quot;, 9999999);$END$" description="Leitura de parametro Web 5.0" toReformat="false" toShortenFQNames="false">
+    <variable name="NOME" expression="" defaultValue="&quot;Param&quot;" alwaysStopAt="true" />
+    <variable name="PARAM" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="LSP" value="true" />
+    </context>
+  </template>
+  <template name="audit" value="lLogAuditoria.Adicionar();&#10;lLogAuditoria.funcionalidade = &quot;$FUNC$&quot;;&#10;lLogAuditoria.descricaoRegistro = &quot;$DESC$&quot;;&#10;lLogAuditoria.operacao = &quot;$OPER$&quot;;&#10;lLogAuditoria.codigoRegistro = $CODIGO$;&#10;lLogAuditoria.tabela = &quot;$TABELA$&quot;;&#10;lLogAuditoria.Gravar();&#10;&#10;lLogItens.Adicionar();&#10;lLogItens.campo = &quot;$CAMPO$&quot;;&#10;lLogItens.campoTabela = &quot;$CAMPOTAB$&quot;;&#10;lLogItens.novoValor = $VALOR$;&#10;lLogItens.Gravar();$END$" description="Bloco de log de auditoria (lLogAuditoria/lLogItens)" toReformat="false" toShortenFQNames="false">
+    <variable name="FUNC" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="OPER" expression="" defaultValue="&quot;INCLUSAO&quot;" alwaysStopAt="true" />
+    <variable name="CODIGO" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="TABELA" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="CAMPO" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="CAMPOTAB" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="VALOR" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="LSP" value="true" />
+    </context>
+  </template>
+  <template name="trans" value="IniciarTransacao();&#10;$END$&#10;FinalizarTransacao();" description="Transacao (Iniciar/Finalizar)" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="LSP" value="true" />
+    </context>
+  </template>
+  <template name="jsonresp" value="Definir Alfa aResponse;&#10;aResponse = &quot;{}&quot;;&#10;addKeyAndStringValueInJSON(aResponse, &quot;$CHAVE$&quot;, $VALOR$, aResponse);&#10;Web_HTML = aResponse;$END$" description="Resposta JSON + Web_HTML" toReformat="false" toShortenFQNames="false">
+    <variable name="CHAVE" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <variable name="VALOR" expression="" defaultValue="&quot;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="LSP" value="true" />
+    </context>
+  </template>
+  <template name="pag" value="Definir Numero nPageSize;&#10;Definir Numero nPageIndex;&#10;Definir Alfa aSortField;&#10;Definir Alfa aSortOrder;&#10;Definir Numero nPageOffset;&#10;WCheckValInteger(&quot;pageSize&quot;, &quot;&quot;, nPageSize, &quot;N&quot;, 9999999);&#10;WCheckValInteger(&quot;pageIndex&quot;, &quot;&quot;, nPageIndex, &quot;N&quot;, 9999999);&#10;WCheckValString(&quot;sortField&quot;, &quot;&quot;, aSortField, &quot;S&quot;, 9999999);&#10;WCheckValString(&quot;sortOrder&quot;, &quot;&quot;, aSortOrder, &quot;S&quot;, 9999999);&#10;nPageOffset = nPageIndex * nPageSize;$END$" description="Parametros de paginacao Web 5.0" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="LSP" value="true" />
+    </context>
+  </template>
+</templateSet>

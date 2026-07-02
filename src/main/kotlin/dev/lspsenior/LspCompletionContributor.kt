@@ -15,8 +15,13 @@ import com.intellij.util.indexing.FileBasedIndex
  *
  * Como o TextMate não tem PSI estrutural, controlamos tudo manualmente: extraímos o
  * prefixo do texto antes do cursor e oferecemos palavras-chave, tipos, booleanos, as
- * funções do projeto (via [LspFunctionIndex]) e as variáveis visíveis no escopo
- * (via [LspSymbols.visibleVariables]).
+ * funções do projeto (via [LspFunctionIndex]), as funções nativas com assinatura
+ * (via [LspNativeFunctions]), as variáveis visíveis no escopo com o seu tipo
+ * (via [LspSymbols.visibleVariablesWithType]) e as variáveis reservadas
+ * (via [LspReservedVariables]).
+ *
+ * Funções inserem "()" e, quando têm parâmetros, o cursor entra entre eles para que o
+ * usuário informe os argumentos; a assinatura aparece ao lado do nome na lista.
  */
 class LspCompletionContributor : CompletionContributor() {
 
@@ -56,15 +61,39 @@ class LspCompletionContributor : CompletionContributor() {
                     LookupElementBuilder.create(fn)
                         .withIcon(AllIcons.Nodes.Function)
                         .withTypeText("função")
-                        .withInsertHandler(PARENS),
+                        .withInsertHandler(PARENS_INSIDE),
                 )
             }
         } catch (_: Exception) {
             // índice indisponível (ex.: durante indexação) — segue sem funções
         }
 
-        for (variable in LspSymbols.visibleVariables(text, offset)) {
-            rs.addElement(LookupElementBuilder.create(variable).withIcon(AllIcons.Nodes.Variable).withTypeText("variável"))
+        // Variáveis declaradas no escopo, exibindo o tipo (Alfa, Numero, Data...).
+        for (variable in LspSymbols.visibleVariablesWithType(text, offset)) {
+            rs.addElement(
+                LookupElementBuilder.create(variable.name)
+                    .withIcon(AllIcons.Nodes.Variable)
+                    .withTypeText(variable.type ?: "variável"),
+            )
+        }
+
+        // Variáveis reservadas da linguagem (NomEmp, DatSis, Web_HTML...).
+        for (reserved in LspReservedVariables.names) {
+            rs.addElement(
+                LookupElementBuilder.create(reserved)
+                    .withIcon(AllIcons.Nodes.Constant)
+                    .withTypeText("reservada"),
+            )
+        }
+
+        // Funções nativas: assinatura ao lado do nome; cursor entra nos parênteses.
+        for (native in LspNativeFunctions.all) {
+            var element = LookupElementBuilder.create(native.name)
+                .withIcon(AllIcons.Nodes.Function)
+                .withTypeText("nativa")
+                .withInsertHandler(if (native.hasParams) PARENS_INSIDE else PARENS_AFTER)
+            if (native.hasParams) element = element.withTailText("(${native.params})", true)
+            rs.addElement(element)
         }
     }
 
@@ -82,15 +111,27 @@ class LspCompletionContributor : CompletionContributor() {
         )
         val BOOLEANS = listOf("cVerdadeiro", "cFalso")
 
-        /** Insere "()" após a função e posiciona o cursor entre os parênteses. */
-        val PARENS = InsertHandler<LookupElement> { context: InsertionContext, _ ->
-            val editor = context.editor
-            val tail = context.document.charsSequence
-            val already = context.tailOffset < tail.length && tail[context.tailOffset] == '('
-            if (!already) {
-                context.document.insertString(context.tailOffset, "()")
-            }
-            editor.caretModel.moveToOffset(context.tailOffset + 1)
+        /** Insere "()" e posiciona o cursor ENTRE os parênteses (funções com parâmetros). */
+        val PARENS_INSIDE = InsertHandler<LookupElement> { context: InsertionContext, _ ->
+            insertParens(context, caretInside = true)
+        }
+
+        /** Insere "()" e posiciona o cursor APÓS os parênteses (funções sem parâmetros). */
+        val PARENS_AFTER = InsertHandler<LookupElement> { context: InsertionContext, _ ->
+            insertParens(context, caretInside = false)
+        }
+
+        private fun insertParens(context: InsertionContext, caretInside: Boolean) {
+            // Captura o offset logo após o nome ANTES de inserir: o tailOffset do context
+            // avança junto com a inserção, então lê-lo depois apontaria além do ")".
+            val pos = context.tailOffset
+            val chars = context.document.charsSequence
+            val already = pos < chars.length && chars[pos] == '('
+            if (!already) context.document.insertString(pos, "()")
+            // "(" fica em pos e ")" em pos+1 → dentro = pos+1, depois do ")" = pos+2.
+            val target = if (caretInside) pos + 1 else pos + 2
+            context.editor.caretModel.moveToOffset(target)
+            context.commitDocument()
         }
     }
 }

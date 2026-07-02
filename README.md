@@ -19,6 +19,14 @@ Plugin para IntelliJ IDEA que adiciona suporte à **Linguagem Senior de Programa
 - 🔎 **Localizar usos** — ação "LSP: Localizar Usos" (menu de contexto ou ⌥⇧F7 / Alt+Shift+F7):
   - **Funções** → usos em todo o projeto.
   - **Variáveis** → usos no arquivo, dentro do escopo do bloco.
+- ⚡ **Autocomplete** de palavras-chave, tipos, booleanos, funções do projeto,
+  **funções nativas** (com a assinatura ao lado — ex.: `Concatena(Alfa Str1, Alfa
+  Str2, Alfa Str3, Alfa End Destino)`) e **variáveis do escopo exibindo o tipo**
+  (`Alfa`, `Numero`, `Data`...). Funções inserem `()` e, quando têm parâmetros, o
+  cursor entra entre eles para você informar os argumentos.
+- 📖 **Documentação** (Ctrl+Q) das funções nativas: assinatura completa + descrição oficial.
+- 🏷️ **Variáveis reservadas** (`NomEmp`, `DatSis`, `CodUsu`, `Web_HTML`...) com cor própria
+  e sugeridas no autocomplete.
 - 🧩 **Snippets** para estruturas comuns (`se`, `enquanto`, `para`, `funcao`, etc.)
 - 🖼️ **Ícone** próprio para arquivos `.lsp` / `.lspt`
 - 🔤 **Corretor ortográfico desativado** em `.lsp` / `.lspt` (evita falsos positivos

@@ -124,14 +124,27 @@ object LspSymbols {
      * Nomes de variáveis declaradas ("Definir [Tipo] nome") visíveis em [offset]:
      * declaradas antes e dentro de um bloco que ainda o contém. Ordem de declaração.
      */
-    fun visibleVariables(text: CharSequence, offset: Int): List<String> {
-        val result = LinkedHashSet<String>()
+    fun visibleVariables(text: CharSequence, offset: Int): List<String> =
+        visibleVariablesWithType(text, offset).map { it.name }
+
+    /** Variável declarada: nome e tipo ("Alfa", "Numero"...) quando informado no Definir. */
+    data class VarDecl(val name: String, val type: String?)
+
+    /**
+     * Como [visibleVariables], mas também captura o tipo do "Definir [Tipo] nome".
+     * A primeira declaração vista de cada nome prevalece (ordem de declaração).
+     */
+    fun visibleVariablesWithType(text: CharSequence, offset: Int): List<VarDecl> {
+        val result = LinkedHashMap<String, VarDecl>()
         for (match in DECL_ANY.findAll(text)) {
-            val group = match.groups[1] ?: continue
-            if (group.range.first > offset) continue
-            if (offset < enclosingBlockEnd(text, match.range.first)) result.add(group.value)
+            val nameGroup = match.groups[2] ?: continue
+            if (nameGroup.range.first > offset) continue
+            if (offset < enclosingBlockEnd(text, match.range.first)) {
+                val type = match.groups[1]?.value?.takeIf { it.isNotBlank() }
+                result.putIfAbsent(nameGroup.value, VarDecl(nameGroup.value, type))
+            }
         }
-        return result.toList()
+        return result.values.toList()
     }
 
     /** Intervalo [início..fim] de busca para um nome: escopo da variável, ou todo o arquivo. */
@@ -144,8 +157,9 @@ object LspSymbols {
     fun isIdentifier(name: String): Boolean =
         name.isNotEmpty() && (name[0].isLetter() || name[0] == '_') && name.all { isIdent(it) }
 
+    // Grupo 1 = tipo (opcional, ex.: "Alfa"); grupo 2 = nome da variável.
     private val DECL_ANY = Regex(
-        "(?i)\\bDefinir[ \\t]+(?:[A-Za-z_][A-Za-z0-9_.]*[ \\t]+)?([A-Za-z_][A-Za-z0-9_]*)\\b(?![ \\t]*\\()",
+        "(?i)\\bDefinir[ \\t]+(?:([A-Za-z_][A-Za-z0-9_.]*)[ \\t]+)?([A-Za-z_][A-Za-z0-9_]*)\\b(?![ \\t]*\\()",
     )
 
     private fun isIdent(c: Char) = c.isLetterOrDigit() || c == '_'
