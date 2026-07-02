@@ -18,7 +18,7 @@ import javax.swing.Icon
  *
  * O TextMate não fornece árvore PSI, então construímos o outline varrendo o texto e
  * montando a hierarquia de blocos `{ }` / `Inicio`...`Fim` (funções, se, enquanto, etc.),
- * com os mesmos rótulos das breadcrumbs. Navegação via [LspNavTarget].
+ * com rótulos derivados do texto de cada bloco. Navegação via [LspNavTarget].
  */
 class LspStructureViewFactory : PsiStructureViewFactory {
     override fun getStructureViewBuilder(psiFile: PsiFile): StructureViewBuilder? {
