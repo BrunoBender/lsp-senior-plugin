@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.lspsenior"
-version = "1.4.3"
+version = "1.4.4"
 
 repositories {
     mavenCentral()

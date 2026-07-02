@@ -25,7 +25,7 @@ Funciona automaticamente em arquivos **`.lsp`** e **`.lspt`** — é só abrir. 
   - **Variáveis** → vai até o `Definir`, respeitando o **escopo do bloco**.
 - **Localizar usos** (`Alt+Shift+F7`) e **realce de ocorrências** no arquivo.
 - **Renomear** (`Shift+F6`) funções e variáveis com segurança de escopo.
-- **Structure View** — outline navegável da hierarquia de blocos, essencial em arquivos com centenas de linhas.
+- **Structure View** (outline navegável da hierarquia de blocos) e **sticky lines** — os cabeçalhos dos blocos que contêm o cursor ficam fixos no topo enquanto você rola. Essenciais em arquivos com centenas de linhas.
 
 ### 🧩 Edição
 - **Bracket matching** e **auto-close** para `{ }`, `( )`, `[ ]` e `Inicio` / `Fim`.
