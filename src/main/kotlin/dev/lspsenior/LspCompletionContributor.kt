@@ -122,11 +122,16 @@ class LspCompletionContributor : CompletionContributor() {
         }
 
         private fun insertParens(context: InsertionContext, caretInside: Boolean) {
-            val tail = context.document.charsSequence
-            val already = context.tailOffset < tail.length && tail[context.tailOffset] == '('
-            if (!already) context.document.insertString(context.tailOffset, "()")
-            val target = if (caretInside) context.tailOffset + 1 else context.tailOffset + 2
+            // Captura o offset logo após o nome ANTES de inserir: o tailOffset do context
+            // avança junto com a inserção, então lê-lo depois apontaria além do ")".
+            val pos = context.tailOffset
+            val chars = context.document.charsSequence
+            val already = pos < chars.length && chars[pos] == '('
+            if (!already) context.document.insertString(pos, "()")
+            // "(" fica em pos e ")" em pos+1 → dentro = pos+1, depois do ")" = pos+2.
+            val target = if (caretInside) pos + 1 else pos + 2
             context.editor.caretModel.moveToOffset(target)
+            context.commitDocument()
         }
     }
 }
