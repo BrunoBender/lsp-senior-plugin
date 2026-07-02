@@ -1,47 +1,49 @@
 # LSP Senior — Suporte à Linguagem Senior de Programação
 
-Trabalha com regras, telas e relatórios do **ERP Senior**? Este plugin transforma o IntelliJ IDEA num editor de verdade para a **Linguagem Senior de Programação (LSP)**, com colorização, navegação e produtividade que você não tem dentro do SGI.
+Trabalha com regras, telas e relatórios do **ERP Senior**? Este plugin transforma o IntelliJ IDEA num editor de verdade para a **Linguagem Senior de Programação (LSP)**, com colorização, navegação, autocomplete e documentação que você não tem dentro do SGI.
 
-Funciona automaticamente em arquivos **`.lsp`** e **`.lspt`** — é só abrir.
+Funciona automaticamente em arquivos **`.lsp`** e **`.lspt`** — é só abrir. O plugin entende a estrutura do código (blocos `Se`, `Enquanto`, `Regra`, `Inicio`/`Fim`), o escopo das variáveis e as funções do seu projeto, e traz embutido o catálogo de **funções nativas** e **variáveis reservadas** da linguagem.
 
 ---
 
 ## ✨ Recursos
 
-### 🎨 Colorização de sintaxe
-Destaque de cores por categoria, deixando o código fácil de ler:
-- **Controle** — `Se`, `Senao`, `Enquanto`, `Para`, `Regra`...
-- **Tipos** — `Alfa`, `Numero`, `Data`, `Lista`, `Booleano`...
-- **Booleanos** — `cVerdadeiro`, `cFalso`
-- **Funções** do ERP e do RH, **operadores**, **comentários** e **textos**
+### ⚡ Escrita e autocomplete
+- **Autocomplete inteligente** — palavras-chave, tipos, booleanos, funções do seu projeto e centenas de **funções nativas com a assinatura ao lado** (ex.: `Concatena(Alfa Str1, Alfa Str2, Alfa Str3, Alfa End Destino)`). Ao aceitar uma função, o **cursor entra entre os parênteses** para você informar os argumentos.
+- **Variáveis com o tipo** — as variáveis do escopo aparecem já exibindo o tipo (`Alfa`, `Numero`, `Data`...).
+- **Documentação inline** (`Ctrl+Q`) — assinatura completa + descrição oficial das funções nativas.
+- **Live Templates** para padrões do dia a dia (cursor SQL, validação de permissão, auditoria, paginação, resposta JSON...).
 
-### 🧭 Navegação inteligente
+### 🎨 Leitura e colorização
+- **Colorização de sintaxe** por categoria: controle, tipos, declaração, funções, operadores, comentários e textos.
+- **Variáveis reservadas em destaque** (`NomEmp`, `DatSis`, `Web_HTML`...), reconhecidas sem diferenciar maiúsculas de minúsculas.
+- **Corretor ortográfico desativado** nesses arquivos — sem sublinhados em identificadores e texto em português.
+
+### 🧭 Navegação
 - **Ir para a declaração** (`Ctrl/Cmd+B` ou `Ctrl/Cmd+Click`):
-  - **Funções** → pula direto para a implementação `Funcao nome()` em qualquer arquivo do projeto.
-  - **Variáveis** → vai até o `Definir`, respeitando o **escopo do bloco** (a mesma variável em blocos diferentes não se confunde).
-- **Localizar usos** (`Alt+Shift+F7` ou menu de contexto):
-  - **Funções** → todos os usos no projeto.
-  - **Variáveis** → usos no arquivo, dentro do escopo.
+  - **Funções** → implementação `Funcao nome()` em qualquer arquivo do projeto.
+  - **Variáveis** → vai até o `Definir`, respeitando o **escopo do bloco**.
+- **Localizar usos** (`Alt+Shift+F7`) e **realce de ocorrências** no arquivo.
+- **Renomear** (`Shift+F6`) funções e variáveis com segurança de escopo.
+- **Structure View**, **breadcrumbs** (o caminho de blocos no topo do editor) e **sticky lines** — essenciais em arquivos com centenas de linhas.
 
-### ⚡ Produtividade
-- **Bracket matching** e **auto-close** para `{ }`, `( )`, `[ ]` e `Inicio` / `Fim`
-- **Code folding** de blocos `{ }` e `Inicio` / `Fim`
-- **Snippets** para estruturas comuns (`se`, `enquanto`, `para`, `funcao`...)
-- **Ícone próprio** para arquivos `.lsp` / `.lspt`
-- **Corretor ortográfico desativado** nesses arquivos — sem sublinhados vermelhos em identificadores e texto em português
+### 🧩 Edição
+- **Bracket matching** e **auto-close** para `{ }`, `( )`, `[ ]` e `Inicio` / `Fim`.
+- **Code folding** de blocos `{ }`, `Inicio` / `Fim` e banners de comentário.
+- **Ícone próprio** para arquivos `.lsp` / `.lspt`.
 
 ---
 
 ## 📦 Requisitos
 
-- IntelliJ IDEA **2025.1 ou superior** (Community ou Ultimate)
+- IntelliJ IDEA **2025.3 ou superior** (Community ou Ultimate)
 - O plugin **TextMate** (já vem incluso na IDE)
 
 ---
 
 ## ⚠️ Após instalar, reinicie a IDE
 
-A colorização depende de um bundle que **só carrega na inicialização**. Se instalou e o código não ficou colorido, faça um **restart completo** do IntelliJ — não basta o "load without restart".
+Parte dos recursos (como o bundle de colorização) **só carrega na inicialização**. Se instalou e o código não ficou colorido, faça um **restart completo** do IntelliJ — não basta o "load without restart".
 
 ---
 

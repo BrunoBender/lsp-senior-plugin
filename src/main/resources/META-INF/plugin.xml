@@ -2,7 +2,55 @@
     <id>dev.lspsenior</id>
     <name>LSP Senior</name>
     <vendor>LSP Senior</vendor>
-    <description>Support for the Senior Programming Language (LSP): syntax highlighting, bracket matching, auto-close, code folding, breadcrumbs and snippets for .lsp and .lspt files.</description>
+    <description><![CDATA[
+<p><b>LSP Senior</b> transforma o IntelliJ IDEA num editor completo para a <b>Linguagem Senior de Programação (LSP)</b> — as regras, telas e relatórios do <b>ERP Senior</b>. Colorização, navegação, autocomplete e documentação que você não tem dentro do SGI, funcionando automaticamente em arquivos <code>.lsp</code> e <code>.lspt</code>.</p>
+
+<p>O plugin entende a estrutura do seu código (blocos <code>Se</code>, <code>Enquanto</code>, <code>Regra</code>, <code>Inicio</code>/<code>Fim</code>), o escopo das variáveis e as funções do seu projeto — e traz embutido o catálogo de <b>funções nativas</b> (com assinatura e descrição) e de <b>variáveis reservadas</b> da linguagem.</p>
+
+<p><b>Escrita e autocomplete</b></p>
+<ul>
+  <li><b>Autocomplete inteligente</b>: palavras-chave, tipos, booleanos, funções do seu projeto e centenas de <b>funções nativas com a assinatura ao lado</b> — ex.: <code>Concatena(Alfa Str1, Alfa Str2, Alfa Str3, Alfa End Destino)</code>. Ao aceitar uma função, o cursor entra entre os parênteses para você informar os argumentos.</li>
+  <li><b>Variáveis com o tipo</b>: as variáveis do escopo aparecem no autocomplete já exibindo o tipo (<code>Alfa</code>, <code>Numero</code>, <code>Data</code>...).</li>
+  <li><b>Documentação inline</b> (<code>Ctrl+Q</code>): mostra a assinatura completa e a descrição oficial das funções nativas.</li>
+  <li><b>Live Templates</b> para os padrões do dia a dia (cursor SQL, validação de permissão, auditoria, paginação, resposta JSON...).</li>
+</ul>
+
+<p><b>Leitura e colorização</b></p>
+<ul>
+  <li><b>Colorização de sintaxe</b> por categoria: controle, tipos, declaração, funções, operadores, comentários e textos.</li>
+  <li><b>Variáveis reservadas em destaque</b> (<code>NomEmp</code>, <code>DatSis</code>, <code>Web_HTML</code>...), reconhecidas sem diferenciar maiúsculas de minúsculas.</li>
+  <li><b>Corretor ortográfico desativado</b> nesses arquivos — sem sublinhados em identificadores e texto em português.</li>
+</ul>
+
+<p><b>Navegação</b></p>
+<ul>
+  <li><b>Ir para a declaração</b> (<code>Ctrl/Cmd+B</code>): funções em qualquer arquivo do projeto; variáveis respeitando o escopo do bloco.</li>
+  <li><b>Localizar usos</b> (<code>Alt+Shift+F7</code>) e <b>realce de ocorrências</b> no arquivo.</li>
+  <li><b>Renomear</b> (<code>Shift+F6</code>) funções e variáveis com segurança de escopo.</li>
+  <li><b>Structure View</b>, <b>breadcrumbs</b> (o caminho de blocos no topo do editor) e <b>sticky lines</b> — essenciais em arquivos com centenas de linhas.</li>
+</ul>
+
+<p><b>Edição</b></p>
+<ul>
+  <li><b>Bracket matching</b> e <b>auto-close</b> para <code>{ }</code>, <code>( )</code>, <code>[ ]</code> e <code>Inicio</code>/<code>Fim</code>.</li>
+  <li><b>Code folding</b> de blocos <code>{ }</code>, <code>Inicio</code>/<code>Fim</code> e banners de comentário.</li>
+  <li><b>Ícone próprio</b> para arquivos <code>.lsp</code> e <code>.lspt</code>.</li>
+</ul>
+
+<p><b>Requisitos:</b> IntelliJ IDEA 2025.3 ou superior (Community ou Ultimate). O plugin <b>TextMate</b>, já incluso na IDE, é uma dependência.</p>
+<p><b>Após instalar, reinicie a IDE</b> — parte dos recursos (como o bundle de colorização) só carrega na inicialização.</p>
+]]></description>
+
+    <change-notes><![CDATA[
+<p><b>1.4.2</b> — Produtividade de escrita</p>
+<ul>
+  <li><b>Autocomplete de funções nativas com assinatura</b>: centenas de funções da linguagem passam a sugerir os parâmetros ao lado do nome.</li>
+  <li><b>Cursor entre os parênteses</b> ao completar uma função — pronto para digitar os argumentos.</li>
+  <li><b>Variáveis com o tipo</b> no autocomplete (<code>Alfa</code>, <code>Numero</code>, <code>Data</code>...), em vez do genérico "variável".</li>
+  <li><b>Documentação (Ctrl+Q)</b> das funções nativas: assinatura completa + descrição oficial.</li>
+  <li><b>Variáveis reservadas em vermelho</b> (<code>NomEmp</code>, <code>DatSis</code>, <code>Web_HTML</code>...), reconhecidas sem diferenciar maiúsculas de minúsculas.</li>
+</ul>
+]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.plugins.textmate</depends>
