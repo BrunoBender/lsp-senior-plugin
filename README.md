@@ -10,6 +10,8 @@ Plugin para IntelliJ IDEA que adiciona suporte à **Linguagem Senior de Programa
 - 🔗 **Bracket matching** para `{ }`, `( )`, `[ ]` e `Inicio` / `Fim`
 - ⌨️ **Auto-close** de pares, incluindo `Inicio` / `Fim`
 - 📂 **Code folding** de blocos `{ }` e `Inicio` / `Fim`
+- 🍞 **Breadcrumbs** no topo do editor com o caminho de blocos (`Regra` / `Se` /
+  `Senao` / `Enquanto` / `Para` / `Inicio`) até o cursor
 - 🧭 **Ir para a declaração** (Cmd/Ctrl+B, Cmd/Ctrl+Click):
   - **Funções** → implementação `Funcao nome()` em qualquer arquivo do projeto.
   - **Variáveis** → declaração `Definir [Tipo] nome`, local ao arquivo e
