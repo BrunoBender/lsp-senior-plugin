@@ -27,7 +27,7 @@
   <li><b>Ir para a declaração</b> (<code>Ctrl/Cmd+B</code>): funções em qualquer arquivo do projeto; variáveis respeitando o escopo do bloco.</li>
   <li><b>Localizar usos</b> (<code>Alt+Shift+F7</code>) e <b>realce de ocorrências</b> no arquivo.</li>
   <li><b>Renomear</b> (<code>Shift+F6</code>) funções e variáveis com segurança de escopo.</li>
-  <li><b>Structure View</b> (outline navegável da hierarquia de blocos) e <b>sticky lines</b> — os cabeçalhos dos blocos que contêm o cursor ficam fixos no topo enquanto você rola. Essenciais em arquivos com centenas de linhas.</li>
+  <li><b>Structure View</b> — outline navegável da hierarquia de blocos, essencial em arquivos com centenas de linhas.</li>
 </ul>
 
 <p><b>Edição</b></p>
@@ -59,8 +59,6 @@
         <iconProvider implementation="dev.lspsenior.LspIconProvider"/>
         <spellchecker.support language="textmate" implementationClass="dev.lspsenior.LspSpellcheckingStrategy"/>
         <lang.foldingBuilder language="textmate" implementationClass="dev.lspsenior.LspFoldingBuilder"/>
-        <breadcrumbsInfoProvider implementation="dev.lspsenior.LspBreadcrumbsProvider"/>
-        <fileBreadcrumbsCollector implementation="dev.lspsenior.LspBreadcrumbsCollector"/>
         <fileBasedIndex implementation="dev.lspsenior.LspFunctionIndex"/>
         <psi.referenceContributor language="textmate" implementation="dev.lspsenior.LspReferenceContributor"/>
         <completion.contributor language="textmate" implementationClass="dev.lspsenior.LspCompletionContributor"/>
