@@ -71,6 +71,7 @@
         <renameHandler implementation="dev.lspsenior.LspRenameHandler"/>
         <liveTemplateContext contextId="LSP" implementation="dev.lspsenior.LspTemplateContextType"/>
         <defaultLiveTemplates file="/liveTemplates/LSP"/>
+        <postStartupActivity implementation="dev.lspsenior.LspBreadcrumbsAutoEnable"/>
     </extensions>
 
     <actions>
